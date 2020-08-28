@@ -13,6 +13,7 @@ class TodoItem extends Component {
     }
   }
 
+  // 被class中的this调用，函数中this指向为空，避免this丢失可以使用箭头函数/bind绑定
   markComplete(e) {
     console.log(this.props)
   }
@@ -27,7 +28,7 @@ class TodoItem extends Component {
       // 5. 仅仅是父组件下面渲染的底层子组件，代表了底层的数据，仅关注某一个数据
       <div style={ this.getStyle() }> 
         <p>
-          <input type="checkbox" onChange={this.markComplete.bind(this)} /> {' '}
+          <input type="checkbox" onChange={this.props.markComplete} /> {' '}
           { this.props.todo.title }
           </p>
       </div>

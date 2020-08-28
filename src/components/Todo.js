@@ -4,10 +4,16 @@ import PropTypes from 'prop-types';
 
 
 class Todos extends Component {
+  markComplete = () => {
+    console.log('hi')
+  }
+
+
   render() {
     // 类似v-for todo相当于item
     return this.props.todos.map((todo) => ( // 根据func创建新的数组
-      <TodoItem key={todo.id} todo={todo} />
+      <TodoItem key={todo.id} todo={todo} markComplete=
+      {this.markComplete} />
     ))
   }
 }
