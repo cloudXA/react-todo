@@ -54,7 +54,7 @@ learn-react
   }
 ```
 
-### 1.2 [✔] 父组件向子组件传值
+### 1.3 [✔] 父组件向子组件传值
 **Tips:** 在class{}之外声明类似于vue的propTypes，
 #### TodoItem.js子组件
 ```javascript
