@@ -13,24 +13,22 @@ class TodoItem extends Component {
     }
   }
 
-  // 被class中的this调用，函数中this指向为空，避免this丢失可以使用箭头函数/bind绑定
-  markComplete(e) {
-    console.log(this.props)
-  }
-
 
   render() {
+    const { id, title, complete } = this.props.todo;
     return (
-      // 1. 内联样式使用{{ backgroundColor: 'red'}}
-      // 2. 内联样式可以使用class之外定义的const 变量，并使用{ itemStyle }完成
-      // 3. 内联样式可以使用const 和 getStyle() 不可连用 ,后面的只会渲染后面得style
-      // 4. 内联样式{ }使用getStyle()，该调用函数会返回{ textDecoration: 'line-through' } 刚好第一条对应起来
-      // 5. 仅仅是父组件下面渲染的底层子组件，代表了底层的数据，仅关注某一个数据
       <div style={ this.getStyle() }> 
         <p>
-          <input type="checkbox" onChange={this.props.markComplete} /> {' '}
-          { this.props.todo.title }
-          </p>
+          <input type="checkbox" onChange={this.props.markComplete.bind(this, id)} /> {' '}
+          { title }
+          <button 
+            onClick={this.props.delTodo.bind(this, id)}
+            style={ btnStyle }
+          >
+            ✂
+          </button>
+            
+        </p>
       </div>
     )
   }
@@ -44,6 +42,16 @@ TodoItem.propTypes = {
 
 const itemStyle = {
   backgroundColor: '#f4f4f4'
+}
+
+const btnStyle = {
+  background: '#ff0000',
+  color: '#fff',
+  border: 'none',
+  padding: '5px 8px',
+  borderRadius: '50%',
+  cursor: 'pointer',
+  float: 'right'
 }
 
 export default TodoItem
