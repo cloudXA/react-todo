@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route} from 'react-router-dom'
 import Todos from './components/Todo.js'
 import Header from './components/layout/Header.js'
 import AddTodo from './components/AddTodo.js'
+import About from './components/pages/about'
 import { v4 as uuidv4 } from 'uuid';
 import './App.css';
 
@@ -25,6 +27,10 @@ class App extends Component {
         completed: false
       }
     ]
+  }
+
+  componentDidMount() {
+    // axios请求数据，完成后端数据渲染
   }
   
   // Toggle complete 
@@ -54,18 +60,30 @@ class App extends Component {
 
   render() {  //作为组件的渲染入口
     return (
-      <div className="App">
-        <div className="container">
-          <Header />
-          <AddTodo addTodo={this.addTodo} />
-          <Todos 
-            todos={this.state.todos} 
-            markComplete={this.markComplete} 
-            delTodo = {this.delTodo}
-          />
+      <Router>
+         <div className="App">
+          <div className="container">
+            <Header />
+            <Route exact path="/" render={props => (
+              // 替换div
+              <React.Fragment> 
+                <AddTodo addTodo={this.addTodo} />
+                <Todos 
+                  todos={this.state.todos} 
+                  markComplete={this.markComplete} 
+                  delTodo = {this.delTodo}
+                />
+              </React.Fragment>
+            )} />
+
+            <Route path="/about" component={About} /> 
+            
+          </div>
         </div>
-        
-      </div>
+
+
+      </Router>
+     
     );
   }
 }

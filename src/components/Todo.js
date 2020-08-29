@@ -22,7 +22,9 @@ class Todos extends Component {
 // Todos组件： 中相当于vue的props, 需要的一个变量todos
 // PropTypes
 Todos.propTypes = {
-  todos: PropTypes.array.isRequired
+  todos: PropTypes.array.isRequired,
+  markComplete: PropTypes.func.isRequired,
+  delTodo: PropTypes.func.isRequired
 }
 
 

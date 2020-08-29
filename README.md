@@ -216,3 +216,54 @@ const btnStyle = {
 }
 ```
 输入框初始值value是state的值流入到了value中。如果需要将用户输入的value值传递到state中，需要借助input的onChange 事件，即`onChange={this.onChange}`, onChange作为事件处理函数```onChange = (e) => this.setState({ [e.target.name]: e.target.value})```将input与state属性同名的name赋予新的value值
+
+
+🔗 [**react-route**]
+<br /><br />
+**Tips:**
+引入react-router-dom
+```javascript
+import { BrowserRouter as Router, Route} from 'react-router-dom'
+```
+路由层
+```javascript
+render() {  //作为组件的渲染入口
+    return (
+      <Router>
+         <div className="App">
+          <div className="container">
+            <Header />
+            <Route exact path="/" render={props => (  // 输入http:localhost:3000/进入的页面，渲染React.Fragemetn 包含的组件
+              // 替换div
+              <React.Fragment> 
+                <AddTodo addTodo={this.addTodo} />
+                <Todos 
+                  todos={this.state.todos} 
+                  markComplete={this.markComplete} 
+                  delTodo = {this.delTodo}
+                />
+              </React.Fragment>
+            )} />
+
+            <Route path="/about" component={About} />  // 输入http:localhost:3000/about进入的页面，渲染About组件
+            
+          </div>
+        </div>
+      </Router>
+    );
+  }
+```
+路由Link层，引入
+```import { Link } from 'react-router-dom' ```
+```JavaScript
+function Header() {  
+  return (
+    <header style={headerStyle}>
+      <h1>TodoList</h1>
+      <Link style={linkStyle} to="/">Home</Link> |
+      <Link style={linkStyle} to="/about">About</Link>
+    </header>
+  )
+}
+```
+两个link 作为了用户点击后，将对应的路由输入到导航栏中。
