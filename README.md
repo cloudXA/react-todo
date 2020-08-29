@@ -77,7 +77,7 @@ class Todos extends Component{
 ```
 
 ### 1.4 [✔] data flowing 数据流
-**Tips:**用户交互的底层元素(节点)触发了相应的事件，进而通过this.props.someAction触发该组件父组件的someAction监听；该组件又通过事件响应函数如：
+**Tips:** 用户交互的底层元素(节点)触发了相应的事件，进而通过this.props.someAction触发该组件父组件的someAction监听；该组件又通过事件响应函数如：
 ```JavaScript
    <TodoItem 
       key={todo.id} 
