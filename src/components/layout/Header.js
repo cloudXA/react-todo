@@ -5,8 +5,8 @@ function Header() {
   return (
     <header style={headerStyle}>
       <h1>TodoList</h1>
-      <Link style={linkStyle} to="/">home</Link> |
-      <Link style={linkStyle} to="/about">about</Link>
+      <Link style={linkStyle} to="/react-todo/home">home</Link> |
+      <Link style={linkStyle} to="/react-todo/about">about</Link>
     </header>
   )
 }
